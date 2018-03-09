@@ -1,0 +1,43 @@
+<div class='logout'>
+    <a [routerLink]="['/logout']"> <img style='width:90px;height: 50px' src="./assets/images/logout.jpg" /> </a>
+</div>
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        <h2> {{pageTitle}}</h2>
+    </div>
+    <div class='panel-body'>
+        <div class='table-responsive'>
+            <table class='table' *ngIf='workouts && workouts.length'>
+                <thead>
+                    <tr>
+
+
+                        <th>Title</th>
+                        <th>CalBurntPerUnitTime</th>
+                        <th>Unit Time</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let workout of workouts'>
+
+
+                        <td><a [routerLink]="['/workouttranslist', workout.workoutId]">
+                               {{ workout.title | uppercase }}
+                            </a></td>
+                        <td>{{ workout.calBurntPerUnitTime }}</td>
+                        <td> {{ workout.unitTime }} </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>
+
+<div class='panel-footer'>
+    <button class="btn btn-default" (click)="newWorkout();">Create Workout</button>
+</div>

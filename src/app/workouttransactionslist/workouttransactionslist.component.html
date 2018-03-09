@@ -1,0 +1,48 @@
+<div class='logout'>
+  <a [routerLink]="['/logout']"> <img style='width:90px;height: 50px'src="./assets/images/logout.jpg"/> </a>
+</div>
+<div class='panel panel-primary'>
+
+    <div class='panel-heading'>
+        <h2> {{pageTitle + ' : ' }} {{ title | uppercase}} </h2>
+    </div>
+    <div class='panel-body'>
+
+        <div class='table-responsive'>
+            <table class='table' *ngIf='workoutTransactions && workoutTransactions.length'>
+                <thead>
+                    <tr>
+
+                        <th>TxnId</th>
+                        <th>Start Time</th>
+                        <th>Stop Time</th>
+                        <th>Duration</th>
+                        <th>CalsBurnt</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let workoutTransaction of workoutTransactions'>
+                        <td>
+                            {{ workoutTransaction.txnId }}
+                        </td>
+                        <td> {{ workoutTransaction.startTime }}
+                        </td>
+                        <td> {{ workoutTransaction.stopTime }}</td>
+                        <td>{{ workoutTransaction.duration }}</td>
+                        <td>{{ workoutTransaction.calsBurnt }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>
+<div class='panel-footer'>
+    <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+        <i class='glyphicon glyphicon-chevron-left'></i> Back
+    </a>
+    <button class="btn btn-default" (click)="newWorkouttrans();">Record Workout</button>
+</div>
