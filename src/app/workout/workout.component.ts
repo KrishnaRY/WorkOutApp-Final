@@ -19,7 +19,8 @@ export class WorkoutComponent implements OnInit {
     { "id": 3, "unittime": "SECOND" }
   ];
   public selectedUnitTime: UnitTime = this.unittimes[0];
-  constructor(private router: Router, private route: ActivatedRoute, private workoutService: WorkoutService,private alertService: AlertService) { }
+  constructor(private router: Router, private route: ActivatedRoute, 
+  private workoutService: WorkoutService,private alertService: AlertService) { }
 
   ngOnInit() {
     const param = this.route.snapshot.paramMap.get('userId');
