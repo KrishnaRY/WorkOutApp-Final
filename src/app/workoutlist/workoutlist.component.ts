@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { WorkoutService } from '../workout/workout.service';
 import { Workout } from '../_model/workout';
 import { ServiceUrlProviderService } from '../serviceurlprovider.service';
+import { AlertService  } from '../_services/alert.service';
 @Component({
   selector: 'app-workoutlist',
   templateUrl: './workoutlist.component.html',
@@ -14,7 +15,8 @@ export class WorkoutlistComponent implements OnInit {
  pageTitle:string= 'Workout Details ';
    workouts: Workout[] = [];
   errorMessage: string;
-  constructor(private router: Router, private route: ActivatedRoute, private workoutService: WorkoutService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private workoutService: WorkoutService,
+  private alertService: AlertService) { }
  
 
   ngOnInit() {
@@ -27,7 +29,10 @@ export class WorkoutlistComponent implements OnInit {
 
 
       },
-      error => this.errorMessage = <any>error);
+     error => {
+       this.alertService.error(error);
+      });
+
 
   }
   newWorkout() {

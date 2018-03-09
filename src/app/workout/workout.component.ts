@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UnitTime } from '../_model/unittime';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WorkoutService } from './workout.service';
+import { AlertService  } from '../_services/alert.service';
 @Component({
   selector: 'app-workout',
   templateUrl: './workout.component.html',
@@ -12,14 +13,13 @@ export class WorkoutComponent implements OnInit {
   pageTitle:string= 'Create workout';
   model: any = {};
   userId: string;
-  errorMessage: string;
   public unittimes: UnitTime[] = [
     { "id": 1, "unittime": "HOUR" },
     { "id": 2, "unittime": "MINUTE" },
     { "id": 3, "unittime": "SECOND" }
   ];
   public selectedUnitTime: UnitTime = this.unittimes[0];
-  constructor(private router: Router, private route: ActivatedRoute, private workoutService: WorkoutService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private workoutService: WorkoutService,private alertService: AlertService) { }
 
   ngOnInit() {
     const param = this.route.snapshot.paramMap.get('userId');
@@ -38,9 +38,7 @@ export class WorkoutComponent implements OnInit {
     this.router.navigate(['/workoutlist', `${this.userId}`]);
     },
       error => {
-        this.errorMessage = <any>error;
-        console.log(this.errorMessage);
-
+       this.alertService.error(error);
       });
 
   }

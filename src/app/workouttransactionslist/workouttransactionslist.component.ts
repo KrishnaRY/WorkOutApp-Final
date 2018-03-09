@@ -3,6 +3,7 @@ import { WorkoutTransaction } from '../_model/workouttransaction';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WorkouttransactionsService } from '../workouttransactions/workouttransactions.service';
 import { Workout } from '../_model/workout';
+import { AlertService  } from '../_services/alert.service';
 @Component({
   selector: 'app-workouttransactionslist',
   templateUrl: './workouttransactionslist.component.html',
@@ -16,7 +17,9 @@ export class WorkouttransactionsListComponent implements OnInit {
   pageTitle:string='Workout Transaction Details';
   workoutTransactions: WorkoutTransaction[] = [];
   errorMessage: string;
-  constructor(private router: Router, private route: ActivatedRoute, private workouttransactionsService: WorkouttransactionsService) { }
+  constructor(private router: Router, private route: ActivatedRoute,
+   private workouttransactionsService: WorkouttransactionsService,
+   private alertService: AlertService) { }
 
   ngOnInit() {
     
@@ -28,7 +31,9 @@ export class WorkouttransactionsListComponent implements OnInit {
       .subscribe(workoutTransaction => {
         this.workoutTransactions = workoutTransaction;
       },
-      error => this.errorMessage = <any>error);
+      error => {
+       this.alertService.error(error);
+      });
   }
 newWorkouttrans(){
  this.router.navigate(['/workouttrans', `${this.workoutId}`]);
@@ -39,11 +44,9 @@ newWorkouttrans(){
       this.userId=workout.userId;
       this.title=workout.title;
          },
-      error => {
-        this.errorMessage = <any>error;
-      
+     error => {
+       this.alertService.error(error);
       });
-
  }
  onBack(){
    this.router.navigate(['/workoutlist', `${this.userId}`]);

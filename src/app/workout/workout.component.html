@@ -6,9 +6,6 @@
         <h2> {{pageTitle}}</h2>
     </div>
    
-    <div *ngIf='errorMessage' class='alert alert-danger'>
-        Error: {{ errorMessage }}
-    </div>
     <form name="form" (ngSubmit)="f.form.valid && workout()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !title.valid }">
             <label for="title">Title</label>

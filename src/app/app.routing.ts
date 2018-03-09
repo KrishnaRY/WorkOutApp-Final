@@ -7,6 +7,7 @@ import { WorkouttransactionsComponent} from './workouttransactions/workouttransa
 import { HomeComponent } from './home/home.component';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'workout/:userId', component: WorkoutComponent },
     { path: 'workoutlist/:userId', component: WorkoutlistComponent },

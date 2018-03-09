@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { WorkouttransactionsService } from '../workouttransactions/workouttransactions.service';
 import { Workout } from '../_model/workout';
 import { WorkoutTransaction } from '../_model/workouttransaction';
+import { AlertService  } from '../_services/alert.service';
 @Component({
   selector: 'app-workouttransactions',
   templateUrl: './workouttransactions.component.html',
@@ -18,9 +19,10 @@ export class WorkouttransactionsComponent implements OnInit {
   isValid:boolean;
   startime:string;
   stoptime:string;
-  errorMessage: string;
+
   constructor(private router: Router, private route: ActivatedRoute, 
-  private workouttransactionsService: WorkouttransactionsService) { }
+  private workouttransactionsService: WorkouttransactionsService,
+   private alertService: AlertService) { }
 
   ngOnInit() {
      const param = this.route.snapshot.paramMap.get('workoutId');
@@ -33,9 +35,8 @@ export class WorkouttransactionsComponent implements OnInit {
       this.userId=workout.userId;
       this.title=workout.title;
          },
-      error => {
-        this.errorMessage = <any>error;
-      
+       error => {
+       this.alertService.error(error);
       });
 
  }
@@ -55,10 +56,10 @@ this.model.workoutId= this.workoutId;
      response =>  {
        this.router.navigate(['/workouttranslist', `${this.workoutId}`]);
          },
-      error => {
-        this.errorMessage = <any>error;
-      
+       error => {
+       this.alertService.error(error);
       });
+
  
 }
 onBack(){

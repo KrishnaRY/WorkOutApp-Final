@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service'
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../_model/user';
+import { AlertService  } from '../_services/alert.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,10 +13,9 @@ export class LoginComponent implements OnInit {
   model: any = {};
   user: User ;
   pageTitle:string='User Login ';
-  errorMessage: string;
-      returnUrl: string;
+  returnUrl: string;
   constructor(private route: ActivatedRoute,
-        private router: Router,private loginService: LoginService) { }
+        private router: Router,private loginService: LoginService,private alertService: AlertService) { }
 
   ngOnInit() {
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
      this.router.navigate(['/workoutlist', `${this.user.userId}`]);
     },
       error => {
-        this.errorMessage = <any>error;
+        this.alertService.error(error);
       
       });
 

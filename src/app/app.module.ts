@@ -14,6 +14,8 @@ import { WorkouttransactionsListComponent } from './workouttransactionslist/work
 import { WorkouttransactionsComponent,WorkouttransactionsService } from './workouttransactions/index';
 import { ServiceUrlProviderService } from './serviceurlprovider.service';
 import { HomeComponent } from './home/home.component';
+import { AlertService  } from './_services/alert.service';
+import { AlertComponent } from './_directives/index';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     WorkoutlistComponent,
     WorkouttransactionsListComponent,
     WorkouttransactionsComponent,
-    HomeComponent
+    HomeComponent,
+    AlertComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -37,7 +40,7 @@ import { HomeComponent } from './home/home.component';
     routing
     
   ],
-   providers: [ServiceUrlProviderService,WorkouttransactionsService,WorkoutService],
+   providers: [ServiceUrlProviderService,WorkouttransactionsService,WorkoutService,AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
