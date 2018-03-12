@@ -1,17 +1,17 @@
 <div class='logout'>
-  <a [routerLink]="['/logout']"> <img style='width:90px;height: 50px'src="./assets/images/logout.jpg"/> </a>
+  <a [routerLink]="['/logout']"> <img style='width:90px;height: 50px' src="./assets/images/logout.jpg" /> </a>
 </div>
 
 <div class='panel panel-primary'>
-   <div class='panel-heading'>
-        <h2> {{pageTitle + ' : ' }} {{ title| uppercase}}</h2>
-    </div>
+  <div class='panel-heading'>
+    <h2> {{pageTitle + ' : ' }} {{ title| uppercase}}</h2>
+  </div>
 
   <div class='panel-footer'>
-     <a class='btn btn-default' (click)='onBack()' style='width:80px'>
-        <i class='glyphicon glyphicon-chevron-left'></i> Back
+    <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+      <i class='glyphicon glyphicon-chevron-left'></i> Back
     </a>
-   
+
     <button [class.disabled]="isClickedStart" class="btn btn-default" (click)="isClickedStart = true;start();">Start</button>
     <button [class.disabled]="isClickedStop" class="btn btn-default" (click)="isClickedStop = true;stop();">Stop</button>
 

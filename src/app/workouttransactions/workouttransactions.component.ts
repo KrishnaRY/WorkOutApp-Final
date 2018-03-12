@@ -66,4 +66,9 @@ onBack(){
     this.router.navigate(['/workouttranslist', `${this.workoutId}`]);
 }
 
+
+
+
+
+
 }

@@ -11,8 +11,7 @@ import { AlertService  } from '../_services/alert.service';
 export class RegisterComponent implements OnInit {
  model: any = {};
  pageTitle:string='User Registration'
- // errorMessage: string;
-  constructor(private route: ActivatedRoute,
+   constructor(private route: ActivatedRoute,
         private router: Router,private registerService:RegisterService,private alertService: AlertService) { }
 
   ngOnInit() {
