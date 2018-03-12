@@ -52,7 +52,9 @@ export class WorkoutComponent implements OnInit {
       }
     }
   }
-
+  onBack() {
+    this.router.navigate(['/workoutlist', `${this.userId}`]);
+  }
   
 
 }
