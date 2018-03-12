@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { WorkouttransactionsService } from '../workouttransactions/workouttransactions.service';
 import { Workout } from '../_model/workout';
 import { AlertService } from '../_services/alert.service';
+
 @Component({
   selector: 'app-workouttransactionslist',
   templateUrl: './workouttransactionslist.component.html',

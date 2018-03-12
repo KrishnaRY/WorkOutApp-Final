@@ -16,6 +16,7 @@ import { ServiceUrlProviderService } from './serviceurlprovider.service';
 import { HomeComponent } from './home/home.component';
 import { AlertService  } from './_services/alert.service';
 import { AlertComponent } from './_directives/index';
+import { DecimalPipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { AlertComponent } from './_directives/index';
     WorkouttransactionsComponent,
     HomeComponent,
     AlertComponent
+    
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
